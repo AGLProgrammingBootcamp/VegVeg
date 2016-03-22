@@ -1,0 +1,99 @@
+<div class = "container">
+<h1>散財家計簿とは？</h1>
+<p>散財家計簿とは、散財したくなるような家計簿アプリです。</p>
+<!--
+puts "-----------------"
+puts "俺の家計簿"
+puts "-----------------"
+</div>
+
+# 家計簿クラス定義
+<div class= "Wallet"> 
+    attr_accessor :total
+    def initialize(default_amount)
+        @total = default_amount
+    end
+    
+    def earn(amount)
+        @total += amount
+    end
+    
+    def use(amount)
+        #if amount > @total
+         #   puts "お金が足りてないじゃない。馬鹿じゃないの！"
+          #  return
+        #end
+        @total -= amount
+    end
+</div>
+
+#必要かなー？
+<div class= "BankAccount">
+    attr_accessor :total1
+    def initialize(default_amount)
+        @total1 = default_amount
+    end
+    
+    def earn(amount)
+        @total1 += amount
+    end
+    
+    def use(amount)
+        @total1 -= amount
+    end
+</div> 
+
+<div class= Ammount>
+    attr_accessor :amount, :x
+    def initialize(amount)
+        @amount = amount
+        @x = 0
+    end
+    def accum(amount)
+        @x+=amount
+    end
+    def percentage
+        self.amount/self.x
+    end
+</div>
+<!--
+# main
+puts "お財布の中にはいまいくら入っていますか？"
+k = Wallet.new(gets.chomp.to_i)
+puts "口座の中にはいまいくら入っていますか？"
+bank = BankAccount.new(gets.chomp.to_i)
+puts "今月の目標消費金額はいくらですか？"
+ammo = Ammount.new(gets.chomp.to_i)
+
+while true
+    puts "番号を入力してください："
+    puts "お金を 1. もらった　2. 使った 3. 現在の手持ち"
+    action = gets.chomp
+    case action
+    when "1" # もらった場合
+        puts "現金ですか？入金ですか？　１．現金　２．入金"
+        action1 = gets.chomp
+        case action1
+            when "1"
+                puts "いくらもらいましたか？"
+                k.earn(gets.chomp.to_i)
+            when "2"
+                puts "いくらもらいましたか？"
+                bank.earn(gets.chomp.to_i)
+            else
+                puts "正しいコードが入力されなかったので、戻ります。"
+        end
+    when "2" # 使った場合
+        puts "いくら使いましたか？"
+        if amount>k.total
+            puts"お金が足りてないじゃない。馬鹿じゃないの！"
+            return
+        end
+        k.use(amount)
+        ammo.accum(amount)
+    else
+    end
+    puts "現在の手持ち　現金：#{k.total}円、預金：#{bank.total1}円\n"
+    puts "あなたの達成率は#{ammo.percentage}％だよ！"-->
+    
+end
